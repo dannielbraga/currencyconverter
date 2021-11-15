@@ -1,5 +1,7 @@
 package br.com.jayatech.currencyconverter.controller;
 
+import br.com.jayatech.currencyconverter.controller.dto.ConversionDTO;
+import br.com.jayatech.currencyconverter.controller.dto.ConversionResponseDTO;
 import br.com.jayatech.currencyconverter.domain.Conversion;
 import br.com.jayatech.currencyconverter.service.IConversionService;
 import org.springframework.http.HttpStatus;
@@ -22,8 +24,8 @@ public class ConversionController {
     }
 
     @PostMapping
-    public ResponseEntity<Conversion> convert(@Valid @RequestBody ConversionDTO conversionDTO) {
-        this.iConversionService.convert(conversionDTO);
-        return new ResponseEntity<>(product, HttpStatus.OK);
+    public ResponseEntity<ConversionResponseDTO> convert(@Valid @RequestBody ConversionDTO conversionDTO) {
+        Conversion conversion = this.iConversionService.convert(conversionDTO.toObject());
+        return new ResponseEntity<>(ConversionResponseDTO.toResponseDTO(conversion), HttpStatus.OK);
     }
 }
