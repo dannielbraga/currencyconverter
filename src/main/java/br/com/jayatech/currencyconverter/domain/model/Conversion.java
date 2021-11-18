@@ -1,11 +1,20 @@
 package br.com.jayatech.currencyconverter.domain.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "conversion")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Conversion {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,60 +38,4 @@ public class Conversion {
 
     @Column(name = "date", nullable = false)
     private LocalDateTime dateTime;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public String getCurrencyFrom() {
-        return currencyFrom;
-    }
-
-    public void setCurrencyFrom(String currencyFrom) {
-        this.currencyFrom = currencyFrom;
-    }
-
-    public String getCurrencyTo() {
-        return currencyTo;
-    }
-
-    public void setCurrencyTo(String currencyTo) {
-        this.currencyTo = currencyTo;
-    }
-
-    public BigDecimal getAmountFrom() {
-        return amountFrom;
-    }
-
-    public void setAmountFrom(BigDecimal amountFrom) {
-        this.amountFrom = amountFrom;
-    }
-
-    public BigDecimal getConversionRate() {
-        return conversionRate;
-    }
-
-    public void setConversionRate(BigDecimal conversionRate) {
-        this.conversionRate = conversionRate;
-    }
-
-    public LocalDateTime getDate() {
-        return dateTime;
-    }
-
-    public void setDate(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
-    }
 }
