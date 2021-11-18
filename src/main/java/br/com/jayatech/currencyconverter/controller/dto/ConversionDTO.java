@@ -1,24 +1,23 @@
 package br.com.jayatech.currencyconverter.controller.dto;
 
-import br.com.jayatech.currencyconverter.domain.Conversion;
-
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public class ConversionDTO {
     @NotNull(message = "User Id is required")
-    private Integer userId;
+    private Long userId;
 
-    @NotNull(message = "Currency of origin is required")
+    @NotEmpty(message = "Currency of origin is required")
     private String currencyFrom;
 
-    @NotNull(message = "Destination currency is required")
+    @NotEmpty(message = "Destination currency is required")
     private String currencyTo;
 
     @NotNull(message = "Amount of origin is required")
     private BigDecimal amountFrom;
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
@@ -34,7 +33,19 @@ public class ConversionDTO {
         return amountFrom;
     }
 
-    public Conversion toObject() {
-        return new Conversion(userId, currencyFrom, currencyTo, amountFrom);
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public void setCurrencyFrom(String currencyFrom) {
+        this.currencyFrom = currencyFrom;
+    }
+
+    public void setCurrencyTo(String currencyTo) {
+        this.currencyTo = currencyTo;
+    }
+
+    public void setAmountFrom(BigDecimal amountFrom) {
+        this.amountFrom = amountFrom;
     }
 }

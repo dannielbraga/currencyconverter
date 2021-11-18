@@ -1,4 +1,4 @@
-package br.com.jayatech.currencyconverter.domain;
+package br.com.jayatech.currencyconverter.domain.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -12,23 +12,23 @@ public class Conversion {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "user_id")
-    private Integer userId;
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
 
-    @Column(name = "currency_from")
+    @Column(name = "currency_from", nullable = false)
     private String currencyFrom;
 
-    @Column(name = "currency_to")
+    @Column(name = "currency_to", nullable = false)
     private String currencyTo;
 
-    @Column(name = "amount_from")
+    @Column(name = "amount_from", nullable = false)
     private BigDecimal amountFrom;
 
-    @Column(name = "conversion_rate")
+    @Column(name = "conversion_rate", nullable = false)
     private BigDecimal conversionRate;
 
-    @Column(name = "date")
-    private LocalDateTime date;
+    @Column(name = "date", nullable = false)
+    private LocalDateTime dateTime;
 
     public Long getId() {
         return id;
@@ -38,11 +38,11 @@ public class Conversion {
         this.id = id;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
@@ -79,20 +79,10 @@ public class Conversion {
     }
 
     public LocalDateTime getDate() {
-        return date;
+        return dateTime;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
-
-    public Conversion() {
-    }
-
-    public Conversion(Integer userId, String currencyFrom, String currencyTo, BigDecimal amountFrom) {
-        this.userId = userId;
-        this.currencyFrom = currencyFrom;
-        this.currencyTo = currencyTo;
-        this.amountFrom = amountFrom;
+    public void setDate(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 }

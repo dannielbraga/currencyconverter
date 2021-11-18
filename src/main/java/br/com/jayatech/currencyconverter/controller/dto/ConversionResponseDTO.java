@@ -1,13 +1,11 @@
 package br.com.jayatech.currencyconverter.controller.dto;
 
-import br.com.jayatech.currencyconverter.domain.Conversion;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class ConversionResponseDTO {
-    private Long conversionId;
-    private Integer userId;
+    private Long id;
+    private Long userId;
     private String currencyFrom;
     private BigDecimal amountFrom;
     private String currencyTo;
@@ -16,10 +14,10 @@ public class ConversionResponseDTO {
     private LocalDateTime dateTime;
 
     public Long getConversionId() {
-        return conversionId;
+        return id;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
@@ -47,23 +45,35 @@ public class ConversionResponseDTO {
         return dateTime;
     }
 
-    public ConversionResponseDTO(Long conversionId, Integer userId, String currencyFrom, BigDecimal amountFrom,
-                                 String currencyTo, BigDecimal amountTo, BigDecimal conversionRate,
-                                 LocalDateTime dateTime) {
-        this.conversionId = conversionId;
-        this.userId = userId;
-        this.currencyFrom = currencyFrom;
-        this.amountFrom = amountFrom;
-        this.currencyTo = currencyTo;
-        this.amountTo = amountTo;
-        this.conversionRate = conversionRate;
-        this.dateTime = dateTime;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public static ConversionResponseDTO toResponseDTO(Conversion conversion){
-        return new ConversionResponseDTO(conversion.getId(), conversion.getUserId(), conversion.getCurrencyFrom(),
-                conversion.getAmountFrom(), conversion.getCurrencyTo(),
-                conversion.getAmountFrom().multiply(conversion.getConversionRate()),
-                conversion.getConversionRate(), conversion.getDate());
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public void setCurrencyFrom(String currencyFrom) {
+        this.currencyFrom = currencyFrom;
+    }
+
+    public void setAmountFrom(BigDecimal amountFrom) {
+        this.amountFrom = amountFrom;
+    }
+
+    public void setCurrencyTo(String currencyTo) {
+        this.currencyTo = currencyTo;
+    }
+
+    public void setAmountTo(BigDecimal amountTo) {
+        this.amountTo = amountTo;
+    }
+
+    public void setConversionRate(BigDecimal conversionRate) {
+        this.conversionRate = conversionRate;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 }
