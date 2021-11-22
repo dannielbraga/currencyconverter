@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,9 +23,9 @@ public class ControllerExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 
-    @ExceptionHandler(ResponseStatusException.class)
-    public ResponseEntity<ResponseError> handleUserNotFound(ResponseStatusException exception){
-        ResponseError error = new ResponseError(HttpStatus.NOT_FOUND.value(), exception.getReason());
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    @ExceptionHandler(InvalidUserException.class)
+    public ResponseEntity<ResponseError> handleInvalidUserException(InvalidUserException exception){
+        ResponseError error = new ResponseError(HttpStatus.BAD_REQUEST.value(), exception.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 }

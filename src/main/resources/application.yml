@@ -28,5 +28,9 @@ logging:
   level:
     org.springframework: info
     org.hibernate: debug
+exchangerates:
+  api:
+    url: "http://api.exchangeratesapi.io/v1/latest?"
+    access_key: "e46776337f43bc2d5b01d56dabdf03d5"
 server:
   port: 9090

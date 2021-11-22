@@ -1,7 +1,8 @@
 package br.com.jayatech.currencyconverter.service;
 
-import br.com.jayatech.currencyconverter.domain.model.Conversion;
+import br.com.jayatech.currencyconverter.controller.dto.ConversionDTO;
+import br.com.jayatech.currencyconverter.controller.dto.ConversionResponseDTO;
 
 public interface IConversionService {
-    Conversion convert(Conversion conversion);
+    ConversionResponseDTO convert(ConversionDTO conversionDTO);
 }

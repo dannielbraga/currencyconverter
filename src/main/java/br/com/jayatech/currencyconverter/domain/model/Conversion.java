@@ -21,8 +21,9 @@ public class Conversion {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column(name = "currency_from", nullable = false)
     private String currencyFrom;
